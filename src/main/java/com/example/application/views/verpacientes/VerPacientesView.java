@@ -20,6 +20,8 @@ public class VerPacientesView extends VerticalLayout {
     @Autowired
     public VerPacientesView(PacienteService pacienteService) {
         this.pacienteService = pacienteService;
+        setSizeFull();
+        setAlignItems(Alignment.CENTER);
 
         H4 titulo = new H4("Pacientes ingresados");
         configurarGrid();
@@ -28,10 +30,14 @@ public class VerPacientesView extends VerticalLayout {
     }
 
     private void configurarGrid() {
-        gridPacientes = new Grid<>(Paciente.class);
+        gridPacientes = new Grid<>(Paciente.class, false);
         gridPacientes.setSizeFull();
-        gridPacientes.setColumns("nombres", "apellidos", "cedula", "direccion", "telefono", "email");
-        // Ajusta estos nombres de columnas según los campos de tu clase Paciente
+        gridPacientes.addColumn(Paciente::getNombre).setHeader("Nombres");
+        gridPacientes.addColumn(Paciente::getApellido).setHeader("Apellidos");
+        gridPacientes.addColumn(Paciente::getCedula).setHeader("Cédula");
+        gridPacientes.addColumn(Paciente::getDireccion).setHeader("Dirección");
+        gridPacientes.addColumn(Paciente::getTelefono).setHeader("Teléfono");
+        gridPacientes.addColumn(Paciente::getEmail).setHeader("Email");
     }
 
     private void cargarPacientes() {

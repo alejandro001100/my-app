@@ -34,5 +34,4 @@ public class CitaService {
         citaRepository.deleteById(id);
     }
 
-    // Otros métodos personalizados
 }

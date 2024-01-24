@@ -21,9 +21,7 @@ public class PacienteService {
         this.pacienteRepository = pacienteRepository;
     }
 
-   /*public Paciente guardarPaciente(Paciente paciente) {
-        return pacienteRepository.save(paciente);
-    }*/
+
 
     public Paciente guardarPaciente(Paciente paciente) {
         if (paciente == null) {
@@ -45,7 +43,11 @@ public class PacienteService {
         return pacienteRepository.findById(id);
     }
 
-    public List<Paciente> obtenerTodosLosPacientes() {
+    public Paciente obtenerPacientePorCedula(String cedula) {
+        return pacienteRepository.findByCedula(cedula);
+    }
+
+        public List<Paciente> obtenerTodosLosPacientes() {
         return pacienteRepository.findAll();
     }
 
